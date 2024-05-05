@@ -1,6 +1,14 @@
 import numpy as np
 
-def get_matrix_neighborh(i:int, j:int, matrix):
+def get_matrix_neighborh(i:int, j:int, matrix:np.matrix):
+    """ Get the direct (non diagnal) neighborh of a matrix element
+
+    :param i: the row position of the element
+    :param j: the column position of the element
+    :param matrix: the matrix
+    :returns: the list of all the element neighborh
+    :raises keyError: raises an exception
+    """
     n = len(matrix)-1
     list_neighborh = []
     if i != 0:
