@@ -21,7 +21,31 @@ def get_matrix_neighborh(i:int, j:int, matrix:np.matrix):
         list_neighborh.append(matrix[i,j+1])
     return list_neighborh
 
+
+def rule_rock_paper_scissor(i:int, j:int, matrix:np.matrix):
+    """ Apply rock paper scissor rule to the matrix. With 0 as rock, 1 as paper and 2 a scissor.
+    If the element lose against one of its neighborh ti takes it's value.
+
+    :param i: the row position of the element
+    :param j: the column position of the element
+    :param matrix: the matrix
+    :returns: the new value for this position.
+    :raises keyError: raises an exception
+    """
+    list_neighboor = get_matrix_neighborh(i, j, matrix)
+    element = matrix[i, j]
+    # Case rock vs paper
+    if element == 0 and 1 in list_neighboor:
+        return 1
+    # Case paper vs scissor
+    elif element == 1 and 2 in list_neighboor:
+        return 2
+    # Case scissor vs rock
+    elif element == 2 and 0 in list_neighboor:
+        return 0
+    return element
+
 if __name__ == "__main__":
-    matrix = np.matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+    matrix = np.matrix([[0, 1, 1], [0, 2, 1], [0, 2, 2]])
     print(matrix)
-    print(get_matrix_neighborh(0,1,matrix))
+    print(rule_rock_paper_scissor(2,0,matrix))
