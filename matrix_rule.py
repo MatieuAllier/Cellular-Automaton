@@ -64,8 +64,4 @@ def apply_rule_to_matrix(matrix:np.matrix, rule_function: callable):
 if __name__ == "__main__":
     random_matrix = np.asmatrix(np.random.randint(3, size=(100,100)))
     print(random_matrix)
-    #matrix = np.matrix([[0, 1, 1], [0, 2, 1], [0, 2, 2]])
-    #print(matrix)
-
-    #print(rule_rock_paper_scissor(0, 2, matrix))
-    #print(create_new_matrix(matrix, rule_rock_paper_scissor))
+    print(apply_rule_to_matrix(random_matrix, rule_rock_paper_scissor))
