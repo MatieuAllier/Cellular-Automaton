@@ -45,7 +45,27 @@ def rule_rock_paper_scissor(i:int, j:int, matrix:np.matrix):
         return 0
     return element
 
+
+def apply_rule_to_matrix(matrix:np.matrix, rule_function: callable):
+    """ Apply a rule function to an entire matrix
+
+    :param matrix: the matrix
+    :param rule_function : the function to apply at the entire matrix
+    :returns: the new value for this position.
+    :raises keyError: raises an exception
+    """
+    n = len(matrix)
+    new_matrix = matrix.copy()
+    for i in range(0, n):
+        for j in range(0, n):
+            new_matrix[i, j] = rule_function(i, j, matrix)
+    return new_matrix
+
 if __name__ == "__main__":
-    matrix = np.matrix([[0, 1, 1], [0, 2, 1], [0, 2, 2]])
-    print(matrix)
-    print(rule_rock_paper_scissor(2,0,matrix))
+    random_matrix = np.asmatrix(np.random.randint(3, size=(100,100)))
+    print(random_matrix)
+    #matrix = np.matrix([[0, 1, 1], [0, 2, 1], [0, 2, 2]])
+    #print(matrix)
+
+    #print(rule_rock_paper_scissor(0, 2, matrix))
+    #print(create_new_matrix(matrix, rule_rock_paper_scissor))
